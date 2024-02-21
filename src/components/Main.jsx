@@ -1,20 +1,21 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import useCountries from "../hooks/useCountries";
+import Input from "./Input";
+import Loader from "./Loader";
+import Filter from "./Filter";
 
 const Main = () => {
+  const { countries, loading } = useCountries();
+  console.log(countries);
+  const regions = [...new Set(countries?.map((country) => country.region))];
+  console.log(regions.sort());
+
   return (
     <main className="mx-4 my-4 bg-light-bg">
-      <div className="shadow-sm w-full h-12 my-2 rounded-md py-2 px-7 flex items-center bg-white">
-        <FontAwesomeIcon
-          icon={faMagnifyingGlass}
-          className="p-1 text-dark-gray"
-        />
-        <input
-          className="w-full mx-5 text-sm text-dark-gray"
-          type="text"
-          placeholder="Search for a country..."
-        />
+      <div className="flex flex-wrap gap-6 justify-between">
+        <Input />
+        <Filter regions={regions} />
       </div>
+      {loading && <Loader />}
     </main>
   );
 };
