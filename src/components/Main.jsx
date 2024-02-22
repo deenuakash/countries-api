@@ -10,46 +10,46 @@ const Main = () => {
   const regions = [...new Set(countries?.map((country) => country.region))];
 
   const [filteredCountries, setFilteredCountries] = useState([]);
-  const [finalCountries, setFinalCountries] = useState(filteredCountries);
+
+  const [filter, setFilter] = useState("");
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     setFilteredCountries(countries);
   }, [countries]);
 
   useEffect(() => {
-    setFinalCountries(filteredCountries);
-  }, [filteredCountries]);
-
-  const handleFilter = (e) => {
-    let filteredCountries =
-      e.target.value !== ""
-        ? countries?.filter((country) => country?.region === e.target.value)
-        : countries;
-    setFilteredCountries(filteredCountries);
-  };
-
-  const handleInput = (e) => {
-    console.log(e.target.value);
-    let filteredResults =
-      e.target.value !== ""
-        ? filteredCountries?.filter((country) =>
-            country?.name?.common
-              ?.toLowerCase()
-              .includes(e.target.value.toLowerCase())
-          )
-        : filteredCountries;
-    setFinalCountries(filteredResults);
-  };
+    console.log(filter, search);
+    let filtered = countries
+      .filter((country) => {
+        if (filter !== "") {
+          return country.region === filter;
+        }
+        return countries;
+      })
+      .filter((country) => {
+        if (search !== "") {
+          return country.name.common
+            .toLowerCase()
+            .includes(search.toLowerCase());
+        }
+        return countries;
+      });
+    setFilteredCountries(filtered);
+  }, [filter, search]);
 
   return (
-    <main className="mx-4 my-4 bg-light-bg md:mx-20 min-w-full">
+    <main className="mx-4 my-4 bg-light-bg md:mx-20">
       <div className="flex flex-wrap gap-6 justify-between">
-        <Input handleInput={handleInput} />
-        <Filter regions={regions} handleFilter={handleFilter} />
+        <Input handleInput={(e) => setSearch(e.target.value)} />
+        <Filter
+          regions={regions}
+          handleFilter={(e) => setFilter(e.target.value)}
+        />
       </div>
       {loading && <Loader />}
-      <div className="flex flex-wrap my-8 justify-center gap-4 md:justify-between">
-        {finalCountries.map((country) => {
+      <div className="flex flex-wrap my-8 justify-center gap-10 md:justify-between md:gap-16">
+        {filteredCountries.map((country) => {
           return <CountryCard key={country.flag} data={country} />;
         })}
       </div>

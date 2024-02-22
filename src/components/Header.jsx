@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <div className="h-[80px] shadow-md flex items-center bg-white">
-      <h3 className="text-sm font-extrabold mx-4 md:mx-20">
+      <h3 className="text-sm font-extrabold mx-4 md:mx-20 md:text-xl lg:2xl">
         Where in the world?
       </h3>
     </div>
