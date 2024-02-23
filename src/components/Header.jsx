@@ -6,13 +6,13 @@ const Header = () => {
   const { theme, toggleTheme } = useTheme();
   console.log(theme);
   return (
-    <div className=" shadow-md  bg-white dark:bg-dark-blue dark:text-white w-full">
-      <div className=" h-[80px] max-w-[1440px] mx-auto flex justify-between items-center">
-        <h3 className="text-sm font-extrabold ml-4 md:ml-20 md:text-xl lg:text-2xl">
+    <div className=" shadow-sm bg-white dark:bg-dark-blue dark:text-white">
+      <div className=" h-[80px] max-w-[1440px] mx-4 md:mx-20 2xl:m-auto flex justify-between items-center">
+        <h3 className="text-sm font-extrabold  md:text-xl lg:text-2xl">
           Where in the world?
         </h3>
         <p
-          className="flex gap-1.5 justify-center items-center mr-4 text-xs md:mr-20 md:text-base"
+          className="flex gap-1.5 justify-center items-center  text-xs md:text-base cursor-pointer"
           onClick={() => toggleTheme()}
         >
           {theme === "Light" ? (
