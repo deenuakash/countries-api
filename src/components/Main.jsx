@@ -38,19 +38,21 @@ const Main = () => {
   }, [filter, search]);
 
   return (
-    <main className="mx-4 my-4 bg-light-bg md:mx-20 dark:bg-dark-bg">
-      <div className="flex flex-wrap gap-6 justify-between">
-        <Input handleInput={(e) => setSearch(e.target.value)} />
-        <Filter
-          regions={regions}
-          handleFilter={(e) => setFilter(e.target.value)}
-        />
-      </div>
-      {loading && <Loader />}
-      <div className="flex flex-wrap my-8 justify-center gap-10 md:justify-between md:gap-16">
-        {filteredCountries.map((country) => {
-          return <CountryCard key={country.flag} data={country} />;
-        })}
+    <main className="mx-4 my-4 bg-light-bg md:mx-20 dark:bg-dark-bg ">
+      <div className="max-w-[1440px] mx-auto">
+        <div className="flex flex-wrap gap-6 justify-between">
+          <Input handleInput={(e) => setSearch(e.target.value)} />
+          <Filter
+            regions={regions}
+            handleFilter={(e) => setFilter(e.target.value)}
+          />
+        </div>
+        {loading && <Loader />}
+        <div className="flex flex-wrap mt-8 justify-center gap-10 md:justify-between md:gap-16">
+          {filteredCountries.map((country) => {
+            return <CountryCard key={country.flag} data={country} />;
+          })}
+        </div>
       </div>
     </main>
   );
