@@ -19,7 +19,6 @@ const Main = () => {
   }, [countries]);
 
   useEffect(() => {
-    console.log(filter, search);
     let filtered = countries
       .filter((country) => {
         if (filter !== "") {
@@ -39,7 +38,7 @@ const Main = () => {
   }, [filter, search]);
 
   return (
-    <main className="mx-4 my-4 bg-light-bg md:mx-20">
+    <main className="mx-4 my-4 bg-light-bg md:mx-20 dark:bg-dark-bg">
       <div className="flex flex-wrap gap-6 justify-between">
         <Input handleInput={(e) => setSearch(e.target.value)} />
         <Filter

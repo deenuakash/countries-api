@@ -10,13 +10,10 @@ const Input = ({ handleInput }) => {
   };
 
   return (
-    <div className="shadow-sm w-full max-w-[30rem] h-12 my-2 rounded-md py-2 px-7 flex items-center bg-white lg:h-14">
-      <FontAwesomeIcon
-        icon={faMagnifyingGlass}
-        className="p-1 text-dark-gray"
-      />
+    <div className="shadow-sm w-full max-w-[30rem] h-12 my-2 rounded-md py-2 px-7 flex items-center lg:h-14 text-dark-gray dark:text-white dark:bg-dark-blue">
+      <FontAwesomeIcon icon={faMagnifyingGlass} className="p-1 " />
       <input
-        className="w-full mx-5 text-xs text-dark-gray  outline-none focus:outline-none md:text-sm"
+        className="w-full mx-5 text-xs dark:bg-dark-blue outline-none focus:outline-none md:text-sm"
         type="text"
         placeholder="Search for a country..."
         value={input}

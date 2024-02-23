@@ -3,7 +3,7 @@ import React from "react";
 const Filter = ({ regions, handleFilter }) => {
   return (
     <select
-      className="h-12 px-6 rounded-md my-2 w-[200px] text-xs lg:h-14 md:text-sm"
+      className="h-12 px-6 rounded-md my-2 w-[200px] text-xs lg:h-14 md:text-sm dark:text-white dark:bg-dark-blue"
       name="Filter by Region"
       defaultValue=""
       onChange={(e) => handleFilter(e)}
