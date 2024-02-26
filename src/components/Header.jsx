@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "../context/ThemeContext";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
@@ -8,9 +9,12 @@ const Header = () => {
   return (
     <div className=" shadow-sm bg-white dark:bg-dark-blue dark:text-white">
       <div className=" h-[80px] max-w-[1440px] mx-4 md:mx-20 2xl:m-auto flex justify-between items-center">
-        <h3 className="text-sm font-extrabold  md:text-xl lg:text-2xl">
+        <Link
+          className="text-sm font-extrabold  md:text-xl lg:text-2xl"
+          to={`/`}
+        >
           Where in the world?
-        </h3>
+        </Link>
         <p
           className="flex gap-1.5 justify-center items-center  text-xs md:text-base cursor-pointer"
           onClick={() => toggleTheme()}

@@ -1,8 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CountryCard = ({ data }) => {
   return (
-    <div className="w-[16.5rem] rounded-md overflow-hidden shadow-sm mb-4 dark:text-white dark:bg-dark-blue">
+    <Link
+      className="w-[16.5rem] rounded-md overflow-hidden shadow-sm mb-4 dark:text-white dark:bg-dark-blue"
+      to={`country/${data.name.common}`}
+    >
       <div className="h-40">
         <img
           className="object-cover w-full h-full"
@@ -27,7 +31,7 @@ const CountryCard = ({ data }) => {
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
