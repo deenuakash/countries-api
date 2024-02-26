@@ -1,23 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const CountryDetails = () => {
-  const { name } = useParams();
-  const [info, setInfo] = useState({});
   const [borders, setBorders] = useState([]);
 
-  useEffect(() => {
-    const fetchCountry = async () => {
-      const res = await fetch(
-        `https://restcountries.com/v3.1/name/${name}?fullText=true`
-      );
-      const data = await res.json();
-      setInfo(...data);
-    };
-    fetchCountry();
-  }, [name]);
+  const [info] = useLoaderData();
 
   useEffect(() => {
     const fetchBorder = async () => {
@@ -103,7 +92,7 @@ const CountryDetails = () => {
                 </p>
               </div>
             </div>
-            <div className="flex flex-wrap gap-2.5">
+            <div className="flex flex-wrap items-center gap-2.5">
               <strong className="mr-4">Border Countries: </strong>
               <div className="flex gap-2.5 flex-wrap items-center">
                 {borders.map((border) => (

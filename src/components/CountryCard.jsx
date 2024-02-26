@@ -9,6 +9,7 @@ const CountryCard = ({ data }) => {
     >
       <div className="h-40">
         <img
+          loading="lazy"
           className="object-cover w-full h-full"
           src={data?.flags?.svg}
           alt={`${data?.name?.common} Flag`}
